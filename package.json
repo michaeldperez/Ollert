@@ -4,7 +4,7 @@
   "description": "Trello clone using React.js, TypeScript.js, Node.js, and Koa.js",
   "main": "./dist/bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,37 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
+    "jest-cli": "^15.1.1",
+    "react-test-renderer": "^15.3.2",
     "source-map-loader": "^0.1.5",
+    "supertest": "^2.0.0",
+    "ts-jest": "^0.1.5",
     "ts-loader": "^0.8.2"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+    "collectCoverageFrom": [
+      "src/**/*"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "globals": {
+      "__TS_CONFIG__": {
+        "module": "commonjs",
+        "jsx": "react"
+      }
+    }
   }
 }
