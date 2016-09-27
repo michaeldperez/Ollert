@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/michaeldperez/Ollert#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },

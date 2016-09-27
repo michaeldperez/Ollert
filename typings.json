@@ -1,6 +1,10 @@
 {
   "globalDependencies": {
+    "body-parser": "registry:dt/body-parser#0.0.0+20160619023215",
+    "express": "registry:dt/express#4.0.0+20160708185218",
     "jest": "registry:dt/jest#15.1.1+20160919141445",
+    "mongodb": "registry:dt/mongodb#2.1.0+20160602142941",
+    "node": "registry:dt/node#6.0.0+20160925070332",
     "react": "registry:dt/react#0.14.0+20160923124221",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
   }
