@@ -1,0 +1,12 @@
+{
+    "mongodb": {
+        "username": "ollert-dev",
+        "hosts": [
+            {
+                "host": "localhost",
+                "port": 27017
+            }
+        ],
+        "database": "ollert"
+    }
+}

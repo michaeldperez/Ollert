@@ -38,7 +38,9 @@ export default class Database {
                    .findOne({'name': list.name}, {fields: {cards: 1}});
     }
 
-    addCard(list: List, card: Card) {
-        
+    addCard(list: List, card: Card): void {
+        return this.db
+                   .collection('list')
+                   .updateOne({name: list.name}, {})
     }
 }
