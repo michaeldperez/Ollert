@@ -1,12 +1,12 @@
-export interface Card {
+export interface ICard {
     text: string,
     createdAt: Date,
     updatedAt: Date
 }
 
-export interface List {
+export interface IList {
     name: string,
-    cards: Array<Card>,
+    cards: Array<ICard>,
     createdAt: Date,
     updatedAt: Date,
 }
