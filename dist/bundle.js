@@ -48,6 +48,7 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(2);
 	var Hello_1 = __webpack_require__(3);
+	//  require('file?name=[name].[ext]!../index.html');
 	ReactDOM.render(React.createElement(Hello_1.Hello, {compiler: "TypeScript", framework: "React"}), document.getElementById('example'));
 
 

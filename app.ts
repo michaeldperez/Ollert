@@ -5,12 +5,11 @@ import * as express    from 'express';
 import * as bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
 
-
-const app: express.Express = express();
+let app: express.Express = express();
 const port: number         = process.env || 3000;
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.resolve(__dirname, '..')));
 
 const server  = app.listen(port, () => {
     const address = server.address().address;
