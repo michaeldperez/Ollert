@@ -8,5 +8,8 @@
             }
         ],
         "database": "ollert"
+    },
+    "server": {
+        "port": 3000
     }
 }
