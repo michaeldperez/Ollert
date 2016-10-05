@@ -19,6 +19,10 @@ const port = config.get('server.port');
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '..')));
 
+app.get('/test', (req, res) => {
+    res.status(200).json({ message: 'Hello from Ollert!' });
+});
+
 const server  = app.listen(port, () => {
     const { address, port } = server.address();
     console.log(`Application listening at http://${address}:${port}`);
