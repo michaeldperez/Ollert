@@ -12,15 +12,17 @@ export interface IList {
     updatedAt: Date
 }
 
-export interface IUser {
+export interface IBoard {
     name: string,
-    pasword: string,
+    lists: Array<IList>,
     createdAt: Date,
     updatedAt: Date
 }
 
-export interface IBoard {
-    name: string,
+export interface IUser {
+    username: string,
+    pasword: string,
+    boards: Array<IBoard>,
     createdAt: Date,
     updatedAt: Date
 }
