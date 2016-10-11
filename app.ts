@@ -1,4 +1,4 @@
-// ///<reference path="./typings/globals/node/index.d.ts"/>
+
 
 // import * as path       from 'path';
 // import * as config     from 'config';
@@ -12,6 +12,16 @@ import path       from 'path';
 import config     from 'config';
 import express    from 'express';
 import bodyParser from 'body-parser';
+
+import mongoose    from 'mongoose';
+import mongodbUri  from 'mongodb-uri';
+
+import { IDbConnection } from './interfaces';
+
+const dbAddress: IDbConnection = config.get('mongodb');
+const connection: string       = mongodbUri.format(dbAddress);
+
+mongoose.connect(connection);
 
 const app = express();
 const port = config.get('server.port');
@@ -27,3 +37,5 @@ const server  = app.listen(port, () => {
     const { address, port } = server.address();
     console.log(`Application listening at http://${address}:${port}`);
 });
+
+export default app;
