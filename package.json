@@ -45,6 +45,7 @@
     "react-test-renderer": "^15.3.2",
     "rollup": "^0.36.1",
     "rollup-plugin-typescript": "^0.8.1",
+    "sinon": "^1.17.6",
     "source-map-loader": "^0.1.5",
     "supertest": "^2.0.0",
     "ts-jest": "^0.1.5",
