@@ -17,6 +17,7 @@ import mongoose    from 'mongoose';
 import mongodbUri  from 'mongodb-uri';
 
 import { IDbConnection } from './interfaces';
+import UserRouter        from './routes/UserRoutes';
 
 const dbAddress: IDbConnection = config.get('mongodb');
 const connection: string       = mongodbUri.format(dbAddress);
@@ -28,6 +29,7 @@ const port = config.get('server.port');
 
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '..')));
+app.use('/users', UserRouter);
 
 app.get('/test', (req, res) => {
     res.status(200).json({ message: 'Hello from Ollert!' });

@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as User    from '../models/User';
+import User         from '../models/User';
 
 export default class UserController {
   /**
@@ -25,6 +25,7 @@ export default class UserController {
   getUsers(req: express.Request, res: express.Response): void {
     User.find((err, docs) => {
         if (err) {}
+        res.status(200);
         res.json(docs);
     });
   }
@@ -51,6 +52,18 @@ export default class UserController {
           }
           
       });
+  }
+
+  /**
+   * Sends a given user back to client
+   * @function getUser
+   * @param { object } req - express request object
+   * @param { object } res - express response object
+   * @returns nothing
+   */
+  getUser(req: express.Request, res: express.Response): void {
+      const user = req.user.toJSON;
+      res.json(user);
   }
 
   /**

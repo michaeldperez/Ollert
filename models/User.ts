@@ -6,7 +6,6 @@ import Board         from '../schema/Board';
 interface IUserModel extends IUser, mongoose.Document { }
 
 const UserSchema = new mongoose.Schema({
-    _id:       { type: mongodb.ObjectID, required: true },
     username:  { type: String, required: true },
     password:  { type: String, required: true },
     boards:    { type: [Board] },
