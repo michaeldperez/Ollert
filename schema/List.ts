@@ -8,7 +8,6 @@ import Card          from './Card';
 // interface IListModel extends IList, mongoose.Document { }
 
 const listSchema = new mongoose.Schema({
-    _id:       { type: mongodb.ObjectID, required: true },
     name:      { type: String, required: true },
     cards:     { type: [Card] },
     createdAt: { type: Date, default: Date.now },

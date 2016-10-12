@@ -7,7 +7,6 @@ import List from './List';
 // interface IBoardModel extends IBoard, mongoose.Document {};
 
 const boardSchema = new mongoose.Schema({
-  _id:       { type: mongodb.ObjectID, required: true },
   name:      { type: String, required: true },
   lists:     { type: [List] },
   createdAt: { type: Date, default: Date.now },

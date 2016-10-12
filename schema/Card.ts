@@ -7,7 +7,6 @@ import * as mongoose from 'mongoose';
 // interface ICardModel extends ICard, mongoose.Document { }
 
 const cardSchema = new mongoose.Schema({
-    _id:       { type: mongodb.ObjectID, required: true },
     text:      { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
