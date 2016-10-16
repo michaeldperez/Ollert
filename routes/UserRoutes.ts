@@ -1,10 +1,10 @@
 ///<reference path="../typings/index.d.ts"/>
 
-import * as express from 'express';
+import * as express   from 'express';
 import UserController from '../controllers/UserController';
 
 /**
- * Router for User collection in database requests
+ * Router for requests to User collection in database
  * @function UserRouter 
  * @params { UserController } UserCtrl - UserController instance
  * @returns express Router

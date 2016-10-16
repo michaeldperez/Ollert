@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as mongodb from 'mongodb';
 import User         from '../models/User';
 
 export default class UserController {
@@ -24,7 +25,10 @@ export default class UserController {
    */
   getUsers(req: express.Request, res: express.Response): void {
     User.find((err, docs) => {
-        if (err) {}
+        if (err) {
+            res.status(500)
+               .send(err);
+        }
         res.status(200);
         res.json(docs);
     });
@@ -38,8 +42,8 @@ export default class UserController {
    * @returns nothing
    */
   getUserById(req: express.Request, res: express.Response, next: express.NextFunction): void {
-      const id = req.params.id;
-      User.findById(id, (err, user) => {
+      const userId = req.params.userId;
+      User.findById(userId, (err, user) => {
           if (err) {
               res.status(500)
                  .send(err);
@@ -62,7 +66,7 @@ export default class UserController {
    * @returns nothing
    */
   getUser(req: express.Request, res: express.Response): void {
-      const user = req.user.toJSON;
+      const user = req.user.toJSON();
       res.json(user);
   }
 
