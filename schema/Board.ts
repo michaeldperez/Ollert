@@ -1,6 +1,6 @@
 import * as mongodb  from 'mongodb';
 import * as mongoose from 'mongoose';
-import List from './List';
+import List          from './List';
 
 // import { IBoard }    from '../interfaces';
 
