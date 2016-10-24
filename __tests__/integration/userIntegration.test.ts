@@ -8,9 +8,11 @@ import User          from '../../models/User';
 
 const agent = request.agent(app);
 
+process.env.NODE_ENV = 'test';
+
 describe('User CRUD test', () => {
-    let userId;
     describe('GET', () => {
+        let userId: string;
         beforeAll(() => {
             userId = '57ec6fc9fd253db3d155f543';
         });
@@ -20,7 +22,7 @@ describe('User CRUD test', () => {
                  .expect('Content-Type', /json/)
                  .end((err, results) => {
                      if (err) { throw err; }
-                     should.equal(typeof results.body, "object");
+                     results.body.should.be.an.Object();
                      done();
                  });
         });
@@ -30,10 +32,57 @@ describe('User CRUD test', () => {
                  .expect('Content-Type', /json/)
                  .end((err, result) => {
                      if (err) { throw err; }
-                     should.equal(result.body.username, 'test');
+                     result.body.should.have.property('username', 'test');
                      done();
                  });
                  
+        });
+    });
+    describe('POST', () => {
+        it('Allows a User to be created', (done) => {
+            const user = {
+                username: 'integrationTestUser',
+                password: 'mySecret',
+                boards: []
+            };
+            agent.post('/users')
+                 .send(user)
+                 .expect(201)
+                 .end((err, result) => {
+                     if (err) { throw err; }
+                     console.log('Result of POST: ', result.body);
+                     done();
+                 });
+        });
+    });
+    describe('PUT', () => {
+        it('Updates a user given an id', (done) => {
+            let user = new User({ username: 'putTestUser', password: 'putTestSecret', boards: [] });
+            user.save((err, user) => {
+                agent.put(`/users/${user._id}`)
+                     .send({ username: 'putTestUserUpdated', password: 'putTestSecretUpdated' })
+                     .expect(200)
+                     .end((err, result) => {
+                         if (err) { throw err; }
+                         result.body.should.be.an.Object();
+                         result.body.should.have.property('username', 'putTestUserUpdated');
+                         result.body.should.have.property('password', 'putTestSecretUpdated');
+                         done();
+                     });
+            });
+        });
+    });
+    describe('DELETE', () => {
+        it('Removes a user given an id', (done) => {
+            let user = new User({ username: 'deleteTestUser', password: 'deleteTestSecret', boards: [] });
+            user.save((err, user) => {
+                agent.delete(`/users/${user._id}`)
+                     .expect(204)
+                     .end((err, result) => {
+                         if (err) { throw err; }
+                         done();
+                     });
+            });
         });
     });
 });
