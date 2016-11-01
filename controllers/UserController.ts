@@ -12,8 +12,15 @@ export default class UserController {
    */
   createUser(req: express.Request, res: express.Response): void {
     const user = new User(req.body);
-    user.save();
-    res.status(201).end();
+    user.save((err, user) => {
+        if (err) {
+            res.status(409)
+               .send(err);
+        } else {
+            res.status(201)
+               .json({ message: 'User successfully added.', user });
+        }
+    });
   }
 
   /**

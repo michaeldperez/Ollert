@@ -14,6 +14,7 @@
   },
   "globalDevDependencies": {
     "jest": "registry:dt/jest#15.1.1+20160919141445",
+    "should": "registry:dt/should#8.1.1+20160608082854",
     "sinon": "registry:dt/sinon#1.16.0+20160924120326",
     "superagent": "registry:dt/superagent#2.0.0+20160906143408",
     "supertest": "registry:dt/supertest#1.1.0+20160724070541"

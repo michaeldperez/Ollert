@@ -1,28 +1,28 @@
-
-
-// import * as path       from 'path';
-// import * as config     from 'config';
+import * as path       from 'path';
+import * as config     from 'config';
 // import * as express    from 'express';
-// import * as bodyParser from 'body-parser';
+const express = require('express');
+import * as bodyParser from 'body-parser';
 
 // const app: express.Express = express();
 // const port: number         = process.env || 3000;
 
-import path       from 'path';
-import config     from 'config';
-import express    from 'express';
-import bodyParser from 'body-parser';
+// import path       from 'path';
+// import config     from 'config';
+// import express    from 'express';
+// import bodyParser from 'body-parser';
 
-import mongoose    from 'mongoose';
-import mongodbUri  from 'mongodb-uri';
+// import mongoose    from 'mongoose';
+import * as mongoose from 'mongoose';
+import mongodbUri    from 'mongodb-uri';
 
 import { IDbConnection } from './interfaces';
 import UserController    from './controllers/UserController';
 import UserRouter        from './routes/UserRoutes';
 
-const dbAddress: IDbConnection = config.get('mongodb');
-const connection: string       = mongodbUri.format(dbAddress);
-
+const dbAddress: IDbConnection = <IDbConnection>config.get('mongodb');
+// const connection: string       = mongodbUri.format(dbAddress);
+const connection: string = 'mongodb://ollert:23d243b8dbf1a10efa691fa70bdbe2b0@localhost:27017/ollert-test';
 mongoose.connect(connection);
 
 const app = express();
