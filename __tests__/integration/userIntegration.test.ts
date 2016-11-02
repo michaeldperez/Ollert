@@ -74,23 +74,23 @@ describe('User CRUD test', () => {
                  });
         });
     });
-    // describe('PUT', () => {
-    //     it('Updates a user given an id', (done) => {
-    //         let user = new User({ username: 'putTestUser', password: 'putTestSecret', boards: [] });
-    //         user.save((err, user) => {
-    //             agent.put(`/users/${user._id}`)
-    //                  .send({ username: 'putTestUserUpdated', password: 'putTestSecretUpdated' })
-    //                  .expect(200)
-    //                  .end((err, result) => {
-    //                      if (err) { throw err; }
-    //                      result.body.should.be.an.Object();
-    //                      result.body.should.have.property('username', 'putTestUserUpdated');
-    //                      result.body.should.have.property('password', 'putTestSecretUpdated');
-    //                      done();
-    //                  });
-    //         });
-    //     });
-    // });
+    describe('PUT', () => {
+        it('Updates a user given an id', (done) => {
+            let user = new User({ username: 'putTestUser', password: 'putTestSecret', boards: [] });
+            user.save((err, user) => {
+                agent.put(`/users/${user._id}`)
+                     .send({ username: 'putTestUserUpdated', password: 'putTestSecretUpdated' })
+                     .expect(200)
+                     .end((err, result) => {
+                         if (err) { throw err; }
+                         result.body.should.be.an.Object();
+                         result.body.should.have.property('username', 'putTestUserUpdated');
+                         result.body.should.have.property('password', 'putTestSecretUpdated');
+                         done();
+                     });
+            });
+        });
+    });
     // describe('DELETE', () => {
     //     it('Removes a user given an id', (done) => {
     //         let user = new User({ username: 'deleteTestUser', password: 'deleteTestSecret', boards: [] });
