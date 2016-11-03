@@ -91,17 +91,18 @@ describe('User CRUD test', () => {
             });
         });
     });
-    // describe('DELETE', () => {
-    //     it('Removes a user given an id', (done) => {
-    //         let user = new User({ username: 'deleteTestUser', password: 'deleteTestSecret', boards: [] });
-    //         user.save((err, user) => {
-    //             agent.delete(`/users/${user._id}`)
-    //                  .expect(204)
-    //                  .end((err, result) => {
-    //                      if (err) { throw err; }
-    //                      done();
-    //                  });
-    //         });
-    //     });
-    // });
+    describe('DELETE', () => {
+        it('Removes a user given an id', (done) => {
+            let user = new User({ username: 'deleteTestUser', password: 'deleteTestSecret', boards: [] });
+            user.save((err, user) => {
+                agent.delete(`/users/${user._id}`)
+                     .expect(200)
+                     .end((err, result) => {
+                         if (err) { throw err; }
+                         result.body.should.have.property('message', 'User removed.');
+                         done();
+                     });
+            });
+        });
+    });
 });

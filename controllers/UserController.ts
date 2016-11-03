@@ -35,9 +35,10 @@ export default class UserController {
         if (err) {
             res.status(500)
                .send(err);
+        } else {
+            res.status(200)
+               .json(docs);
         }
-        res.status(200);
-        res.json(docs);
     });
   }
 
@@ -74,7 +75,8 @@ export default class UserController {
    */
   getUser(req: express.Request, res: express.Response): void {
       const user = req.user.toJSON();
-      res.json(user);
+      res.status(200)
+         .json(user);
   }
 
   /**
@@ -90,8 +92,8 @@ export default class UserController {
               res.status(500)
                  .send(err);
           } else {
-              res.status(204)
-                 .send('User removed');
+              res.status(200)
+                 .json({message: 'User removed.'});
           }
       });
   }
@@ -117,8 +119,9 @@ export default class UserController {
               res.status(500)
                  .send(err);
           } else {
-              res.json(req.user);
+              res.status(200)
+                 .json(req.user);
           }
-      })
+      });
   }
 }
