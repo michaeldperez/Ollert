@@ -14,15 +14,21 @@ import * as bodyParser from 'body-parser';
 
 // import mongoose    from 'mongoose';
 import * as mongoose from 'mongoose';
-import mongodbUri    from 'mongodb-uri';
+import { }   from 'mongodb-uri';
 
 import { IDbConnection } from './interfaces';
 import UserController    from './controllers/UserController';
 import UserRouter        from './routes/UserRoutes';
+import dbConfig          from './config';
 
 const dbAddress: IDbConnection = <IDbConnection>config.get('mongodb');
-// const connection: string       = mongodbUri.format(dbAddress);
-const connection: string = 'mongodb://ollert:23d243b8dbf1a10efa691fa70bdbe2b0@localhost:27017/ollert-test';
+let connection: string;
+if (process.env.NODE_ENV === 'test') {
+    connection = dbConfig.testDB;
+} else {
+    connection = mongodbUri.format(dbAddress);
+}
+// const connection: string = 'mongodb://ollert:23d243b8dbf1a10efa691fa70bdbe2b0@localhost:27017/ollert-test';
 mongoose.connect(connection);
 
 const app = express();

@@ -3,3 +3,4 @@ coverage
 config/local-*
 typings
 dist
+config.ts

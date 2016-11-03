@@ -1,4 +1,3 @@
-///<reference path="../../typings/index.d.ts"/>
 
 import * as request  from 'supertest';
 import * as mongoose from 'mongoose';
@@ -8,7 +7,7 @@ import User          from '../../models/User';
 
 const agent = request.agent(app);
 
-// process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
 
 describe('User CRUD test', () => {
     let user;
