@@ -36,7 +36,6 @@ describe('User CRUD test', () => {
                  });
         });
         it('Returns a user by user id', (done) => {
-            // const user = new User({username: 'integrationTestUser', password: 'mySecret', boards: []});
             user.save((err, user) => {
                 agent.get(`/users/${user._id}`)
                     .expect(200)
@@ -68,11 +67,6 @@ describe('User CRUD test', () => {
                  });
         });
         it('Allows a User to be created', (done) => {
-            // const user = {
-            //     username: 'integrationTestUser',
-            //     password: 'mySecret',
-            //     boards: []
-            // };
             agent.post('/users')
                  .send(user)
                  .expect(201)
@@ -86,7 +80,6 @@ describe('User CRUD test', () => {
     });
     describe('PUT', () => {
         it('Updates a user given an id', (done) => {
-            // let user = new User({ username: 'putTestUser', password: 'putTestSecret', boards: [] });
             user.save((err, user) => {
                 agent.put(`/users/${user._id}`)
                      .send({ username: 'integrationTestUserUpdated', password: 'mySecretUpdated' })
@@ -103,7 +96,6 @@ describe('User CRUD test', () => {
     });
     describe('DELETE', () => {
         it('Removes a user given an id', (done) => {
-            // let user = new User({ username: 'deleteTestUser', password: 'deleteTestSecret', boards: [] });
             user.save((err, user) => {
                 agent.delete(`/users/${user._id}`)
                      .expect(200)
