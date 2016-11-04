@@ -28,7 +28,6 @@ if (process.env.NODE_ENV === 'test') {
 } else {
     connection = mongodbUri.format(dbAddress);
 }
-// const connection: string = 'mongodb://ollert:23d243b8dbf1a10efa691fa70bdbe2b0@localhost:27017/ollert-test';
 mongoose.connect(connection);
 
 const app = express();
