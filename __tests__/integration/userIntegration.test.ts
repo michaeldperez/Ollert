@@ -5,14 +5,19 @@ import * as should   from 'should';
 import app           from '../../app';
 import User          from '../../models/User';
 
-const agent = request.agent(app);
-
 process.env.NODE_ENV = 'test';
+
+const agent = request.agent(app);
 
 describe('User CRUD test', () => {
     let user;
     beforeAll(() => {
         should({});
+    });
+    afterAll(done => {
+        app.close(() => {
+            done();
+        });
     });
     beforeEach(() => {
         user = new User({username: 'integrationTestUser', password: 'mySecret', boards: []});
@@ -22,7 +27,7 @@ describe('User CRUD test', () => {
             if (err) { throw err; }
             done();
         });
-    })
+    });
     describe('GET', () => {
         it('Returns a list of users', (done) => {
             agent.get('/users')
@@ -37,13 +42,13 @@ describe('User CRUD test', () => {
         it('Returns a user by user id', (done) => {
             user.save((err, user) => {
                 agent.get(`/users/${user._id}`)
-                    .expect(200)
-                    .expect('Content-Type', /json/)
-                    .end((err, result) => {
+                     .expect(200)
+                     .expect('Content-Type', /json/)
+                     .end((err, result) => {
                         if (err) { throw err; }
                         result.body.should.have.property('username', 'integrationTestUser');
                         done();
-                    });                
+                     });                
             });  
         });
     });

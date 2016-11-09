@@ -25,4 +25,4 @@ const server = app.listen(port, () => {
     console.log(`Application listening at http://${address}:${port}`);
 });
 
-export default app;
+export default server;
