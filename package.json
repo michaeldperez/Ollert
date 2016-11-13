@@ -1,7 +1,7 @@
 {
   "name": "ollert",
   "version": "0.0.1",
-  "description": "Trello clone using React.js, TypeScript.js, Node.js, and Koa.js",
+  "description": "Trello clone using React.js, TypeScript.js, Node.js, and MongoDB",
   "main": "./dist/bundle.js",
   "scripts": {
     "bundle-server": "rollup -c",
