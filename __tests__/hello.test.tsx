@@ -1,5 +1,3 @@
-///<reference path="../typings/index.d.ts"/>
-
 import * as React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import { Hello } from '../src/components/Hello';
