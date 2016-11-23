@@ -2,17 +2,16 @@ import * as path         from 'path';
 import * as config       from 'config';
 import * as bodyParser   from 'body-parser';
 import * as mongoose     from 'mongoose';
-import mongodbUri        from 'mongodb-uri';
 import UserController    from './controllers/UserController';
 import UserRouter        from './routes/UserRoutes';
-import dbConfig          from './config';
 import { IDbConnection } from './interfaces';
 
 const express                  = require('express');
+const mongodbUri               = require('mongodb-uri');
 const app                      = express();
 const port                     = config.get('server.port');
 const dbAddress: IDbConnection = <IDbConnection>config.get('mongodb');
-const connection: string       = process.env.NODE_ENV === 'test' ? dbConfig.testDB : mongodbUri.format(dbAddress);
+const connection: string       = mongodbUri.format(dbAddress);
 
 mongoose.connect(connection);
 
