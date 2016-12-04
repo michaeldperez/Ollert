@@ -1,5 +1,5 @@
 node_modules
 coverage
-config/local-*
+config/local*
 typings
 dist
