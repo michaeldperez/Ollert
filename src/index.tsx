@@ -1,7 +1,6 @@
- import * as React from 'react';
+ import * as React    from 'react';
  import * as ReactDOM from 'react-dom';
-
- import { Hello } from './components/Hello';
+ import { Hello }     from './components/Hello';
 
 //  require('file?name=[name].[ext]!../index.html');
 

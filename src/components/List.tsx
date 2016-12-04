@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { ICard }  from '../../interfaces';
 
-export interface ListProps { name: string; }
+export interface ListProps { name: string; cards: ICard[] }
 
 export class List extends React.Component<ListProps, {}> {
     render() {

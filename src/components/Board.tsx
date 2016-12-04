@@ -11,6 +11,12 @@ export class Board extends React.Component<BoardProps, BoardState> {
             lists: []
         };
     }
+
+    /**
+     * Renders component
+     * @function render
+     * @return {HTML} Board component
+     */
     render() {
         return (
             <div className="board">
@@ -21,15 +27,26 @@ export class Board extends React.Component<BoardProps, BoardState> {
         );
     }
 
+    /**
+     * Executes contents prior to mounting component
+     * @function componentWillMount
+     * @see {@link _getLists}
+     * @returns {Array} Array of lists
+     */
     componentWillMount() {
         return this._getLists();
     }
 
+    /**
+     * Fetches lists from server
+     * @function _getLists
+     * @returns {Array} array of lists
+     */
     _getLists() {
         const method: string       = 'GET';
         const url: string          = '/users/${userId}/boards/${boardId}/lists';
         const xhr: XMLHttpRequest  = new XMLHttpRequest();
-        
+
         xhr.open(method, url, true);
         xhr.onerror = () => { alert('There was an error retrieving your lists.' ); }
         xhr.onload  = () => {
@@ -39,19 +56,24 @@ export class Board extends React.Component<BoardProps, BoardState> {
         xhr.send();
     }
 
+    /**
+     * Adds a list to components lists
+     * @function _addList
+     * @returns nothing
+     */
     _addList() {
         const list: IList = { name: "", cards: [], createdAt: new Date(), updatedAt: null };
 
         this.setState({
             lists: this.state.lists.concat([ list ])
         });
-        
+
         /* Not DRY - extract to method */
 
         const method: string       = 'POST';
         const url: string          = '/users/${userId}/boards/${boardId}/lists';
         const xhr: XMLHttpRequest  = new XMLHttpRequest();
-        
+
         xhr.open(method, url, true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(list);
