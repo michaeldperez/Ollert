@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React                 from 'react';
+import { Hello }                  from '../src/components/Hello';
 import { shallow, mount, render } from 'enzyme';
-import { Hello } from '../src/components/Hello';
 
 describe("Hello Component", function() {
   it("Renders the correct compiler and framework", function() {

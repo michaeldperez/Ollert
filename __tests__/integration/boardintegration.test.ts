@@ -26,15 +26,15 @@ describe('Board CRUD test', () => {
     });
     // afterEach((done) => {
     //     User.remove({}, err => {
-    //         if (err) { throw err; }
-    //         done();
+    //          if (err) { throw err; }
+    //          done();
     //     });
     // });
     describe('GET', () => {
         it('Returns a list of Boards for a given user', () => {
             user.save((err, user) => {
                 agent.get(`/users/${user._id}`)
-                     .expect(200)
+                     .expect(400)
                      .expect('Content-Type', /json/)
                      .end((err, result) => {
                          if (err) { throw err; }
@@ -45,7 +45,17 @@ describe('Board CRUD test', () => {
         });
 
         it('Returns a user\'s board by id', () => {
-
+            user.save((err, user) => {
+                const board1 = user.boards[0];
+                agent.get(`/users/${user._id}/boards/${board1._id}`)
+                     .expect(400)
+                     .expect('Content-Type', /json/)
+                     .end((err, result) => {
+                         if (err) { throw err }
+                         result.body.should.be.an.Object();
+                         result.body.should.have.property('name', 'testBoard1');
+                     });
+            });
         });
     });
 });

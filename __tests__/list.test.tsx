@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { List } from '../src/components/List';
-import { Card } from '../src/components/Card';
+import * as React                 from 'react';
+import { List }                   from '../src/components/List';
+import { Card }                   from '../src/components/Card';
 import { shallow, mount, render } from 'enzyme';
 
 describe('List component', () => {

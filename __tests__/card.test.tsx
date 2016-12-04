@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Card } from '../src/components/Card';
+import * as React                 from 'react';
+import { Card }                   from '../src/components/Card';
 import { shallow, mount, render } from 'enzyme';
 
 describe('Card component', () => {
