@@ -57,6 +57,7 @@
     "ts-loader": "^0.8.2"
   },
   "jest": {
+    "verbose": true,
     "setupFiles": [
       "__tests__/helpers/setup.js"
     ],
@@ -72,6 +73,7 @@
         "statements": 10
       }
     },
+    "testPathIgnorePatterns": ["__tests__/helpers"],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
